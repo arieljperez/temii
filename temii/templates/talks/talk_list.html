@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}My Talks{% endblock %}
+
+{% block content %}
+
+<h2>My Talks</h2>
+
+{% if talks %}
+<p>Here you have all the talks you've proposed. </p>
+{% endif %}
+
+<ul>
+    {% for talk in talks %}
+        <li>Title: {{ talk.name }} - Proposed Month: {{ talk.months }}</li>
+    {% empty %}
+    <li>You haven't proposed any talk yet. <a href="{% url 'talks:create' %}">Propose a new one!</a></li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock content %}
